@@ -1,7 +1,10 @@
 site_name: Ousia
+site_url: http://ousia.accrete.org
 site_description: A Modest Stupid Embedded Operating System
 theme_dir: yetia
 repo_url: https://github.com/LeafGrass/ousia
+site_description: A Modest Stupid Embedded Operating System Basics
+site_author: Librae
 
 pages:
 - ['index.md', 'Introduction']
