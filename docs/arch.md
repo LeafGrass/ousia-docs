@@ -1,0 +1,61 @@
+## Components
+
+`Ousia (would) contain these components:`
+
+	    (*) User Interface
+	        (*) Shell
+	    (+) Kernel
+	        (*) Scheduler
+	        (+) Interrupt Handler
+	        (+) Memory Management/Protection
+	        (*) Multitasking
+	        (-) File System
+	            (-) Virtual File System
+	        (+) Device Driver
+	        (+) Multi Platform Porting
+	    (-) Communication
+	        (-) IP Stack
+	    (-) Security
+
+	    (-) Automation Test Suite
+	    (*) Build System
+	    (+) Documentation System
+
+
+	Ps: (*) Has been implemented.
+	    (-) Hasn't been implemented yet.
+	    (+) Under developing.
+
+## Architecture
+	Layer 3
+	    +----------------------------------+
+	    |           application            |
+	    +----------------------------------+
+
+	Layer 2
+	      __syscall__  ____direct_call____
+	    +----------------------------------+
+	    |                                  |
+	    |    core   +----------------------+
+	    |           |      framework       |
+	    +-----------+----------------------+
+	              __direct_call____
+	    +----------------------------------+
+	    |              driver              |
+	    +----------------------------------+
+
+	Layer 1
+	    +----------------------------------+
+	    |           platform (hal)         |
+	    +----------------------------------+
+
+	Layer 0
+	    +----------------------------------+
+	    |            hardware              |
+	    +----------------------------------+
+
+
+- Layer 3: application
+- Layer 2: os core routines, frameworks and drivers
+- Layer 1: hardware abstraction layer
+- Layer 0: specific board
