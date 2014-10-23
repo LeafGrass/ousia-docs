@@ -1,5 +1,5 @@
 # Demo
-Things often looks pretty good if it goes with a demo:
+Things always look pretty good if they'd go with a demo:
 
 ## on boot
 

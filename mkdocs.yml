@@ -2,3 +2,9 @@ site_name: Ousia
 site_description: A Modest Stupid Embedded Operating System
 theme_dir: yetia
 repo_url: https://github.com/LeafGrass/ousia
+
+pages:
+- ['index.md', 'Introduction']
+- ['arch.md', 'Architecture']
+- ['demo.md', 'Demo']
+- ['about.md', 'About']
