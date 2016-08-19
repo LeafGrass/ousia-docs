@@ -12,52 +12,52 @@ _A Modest Stupid Embedded Operating System Basics_
 
 
 ## Source Tree Architecture
-* `core/`
+* `core/`  
     Ousia core routines.
 
-* `doc/`
+* `doc/`  
     Complete documentation of Ousia.
 
-* `driver/`
+* `driver/`  
     Different kinds of device drivers based on Ousia.
     They are all configurable.
 
-* `framework/`
+* `framework/`  
     Framework based on Ousia. Such as shell, vfs, etc.
     They are scalable and configurable, either.
 
-* `include/`
+* `include/`  
     Header files of main routines of Ousia.
 
-* `platform/`
+* `platform/`  
     Chip and board specific code, e.g. low-level library.
     Ousia porting code are also placed here.
 
-* `project/`
+* `project/`  
     Project source code. Include several sample project instances.
 
-* `script/`
+* `script/`  
     Useful scripts used while Ousia developing.
 
-* `support/`
+* `support/`  
     Basic supporting stuffs for Ousia developing and building.
     Useful template files are placed here, such as porting code template.
 
 
 ## How to Start for Fresh New Environment
 -   Install toolchain
--   Make
+-   Make  
     For a general purpose, these steps are enough, but there are some more
     steps needs to do for a specific platform.
 
     **e.g.** For stm32 on linux host, we use `dfu`,  `serial` or `jtag` to upload firmware:
-
+    
 1.  Install Codesourcery toolchain. (e.g. `arm-2011.03-42-arm-none-eabi`)
-2.  Install `dfu-util/pyserial/openocd` (all up to your preference).
+2.  Install `dfu-util/pyserial/openocd` (all up to your preference).  
     Ps: In fedora or ubuntu, `yum` or `apt-get` install them shall be fine.
-3.  Resolve usb or serial access problems.
+3.  Resolve usb or serial access problems.  
     (e.g. copy `ousia/support/dfu/45-maple.rules` to `/etc/udev/rules.d/`)
-4.  Install minicom for uart print if you want to debug with console enabled.
+4.  Install minicom for uart print if you want to debug with console enabled.  
     Ps: Default port is `/dev/ttyACMx`
 5.  Do `make` and `make install`.
 
@@ -87,14 +87,14 @@ Core Developing Steps
 Porting Steps
 -------------
 -   Create a directory named `PLATFORM_NAME` in folder `platform/`, then nav to it.
--   Create three files: `rules.mk`, `config.mk` and `target.mk`.
-	`rules.mk`: makefile source code related rules
-	`config.mk`: parameters or flags for toolchains and environment
-	`target.mk`: rules for building target
--   Create a directory named `port` there then create three files in it.
-	`ousia_cfg.h`: os scalability related configurations
-	`ousia_port.h`: header of porting code
-	`ousia_port.c`: implentation of porting
+-   Create three files: `rules.mk`, `config.mk` and `target.mk`.  
+	`rules.mk`: makefile source code related rules  
+	`config.mk`: parameters or flags for toolchains and environment  
+	`target.mk`: rules for building target  
+-   Create a directory named `port` there then create three files in it.  
+	`ousia_cfg.h`: os scalability related configurations  
+	`ousia_port.h`: header of porting code  
+	`ousia_port.c`: implentation of porting  
 -   Create other porting related stuffs, such as linker scripts, if necessary.
 -   Update `TARGET_PLATFORM` and `PROJECT_NAME` in main `Makefile`, then do `make`.
 
@@ -118,7 +118,7 @@ downloading procedure is needed. See `Makefile` for detailed information.
 
 Acknowledgments
 ---------------
-Parts of make system and libmaple stm32 low-level code are borrowed from libmaple.
-Thanks to their excellent works! - [leaflabs.com](http://leaflabs.com)
-Also great appreciations to the contributors! - [nuttx.org](http://nuttx.org)
-Many code are originally come or inspired from **NuttX**, a perfect and stable operating system.
+Parts of make system and libmaple stm32 low-level code are borrowed from libmaple.  
+Thanks to their excellent works! - [leaflabs.com](http://leaflabs.com)  
+Also great appreciations to the contributors! - [nuttx.org](http://nuttx.org)  
+Many code are originally come or inspired from **NuttX**, a perfect and stable operating system.  
