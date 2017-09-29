@@ -1,0 +1,129 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Ousia\n\n\nA Modest Stupid Embedded Operating System Basics\n\n\nCOPYRIGHT (C) LEAFGRASS\n\n\nIntroduction\n\n\n\n\nOusia\n is picked from ancient Greek.\n\n\nMainly intend to describe the basics of an operating system core.\n\n\nDeveloped following \nKISS\n principle.\n\n\nCompletely open and free, use it anywhere you wish!\n\n\n\n\nSource Tree Architecture\n\n\n\n\n\n\ncore/\n\n    Ousia core routines.\n\n\n\n\n\n\ndoc/\n\n    Complete documentation of Ousia.\n\n\n\n\n\n\ndriver/\n\n    Different kinds of device drivers based on Ousia.\n    They are all configurable.\n\n\n\n\n\n\nframework/\n\n    Framework based on Ousia. Such as shell, vfs, etc.\n    They are scalable and configurable, either.\n\n\n\n\n\n\ninclude/\n\n    Header files of main routines of Ousia.\n\n\n\n\n\n\nplatform/\n\n    Chip and board specific code, e.g. low-level library.\n    Ousia porting code are also placed here.\n\n\n\n\n\n\nproject/\n\n    Project source code. Include several sample project instances.\n\n\n\n\n\n\nscript/\n\n    Useful scripts used while Ousia developing.\n\n\n\n\n\n\nsupport/\n\n    Basic supporting stuffs for Ousia developing and building.\n    Useful template files are placed here, such as porting code template.\n\n\n\n\n\n\nHow to Start for Fresh New Environment\n\n\n\n\nInstall toolchain\n\n\n\n\nMake\n\n    For a general purpose, these steps are enough, but there are some more\n    steps needs to do for a specific platform.\n\n\ne.g.\n For stm32 on linux host, we use \ndfu\n,  \nserial\n or \njtag\n to upload firmware:\n\n\n\n\n\n\nInstall Codesourcery toolchain. (e.g. \narm-2011.03-42-arm-none-eabi\n)\n\n\n\n\nInstall \ndfu-util/pyserial/openocd\n (all up to your preference).\n\n    Ps: In fedora or ubuntu, \nyum\n or \napt-get\n install them shall be fine.\n\n\nResolve usb or serial access problems.\n\n    (e.g. copy \nousia/support/dfu/45-maple.rules\n to \n/etc/udev/rules.d/\n)\n\n\nInstall minicom for uart print if you want to debug with console enabled.\n\n    Ps: Default port is \n/dev/ttyACMx\n\n\nDo \nmake\n and \nmake install\n.\n\n\n\n\nCreate User Project Steps\n\n\n\n\nCreate a directory named \nPROJECT_NAME\n in folder \nproject\n.\n\n\nAdd user source code.\n\n\nCreate a file \nrules.mk\n to specify source code related rules for makefile.\n\n\nUpdate \nTARGET_PLATFORM\n and \nPROJECT_NAME\n in main \nMakefile\n, then do \nmake\n.\n\n\n\n\nPs: Refer to existing projects for further detailed information.\n\n\nCore Developing Steps\n\n\n\n\nChoose or create a branch of yourself to work on.\n\n\nUpdate source code, include those version related strings.\n\n\nModify related Makefiles and configuration files.\n\n\nBuild then do some testing on this branch.\n\n\nCommit it.\n\n\nTag a new one if a new version is commited.\n\n\nPush this branch to remote repo.\n\n\nIf this is a release version, update Ousia Release Notes.\n\n\n\n\nPorting Steps\n\n\n\n\nCreate a directory named \nPLATFORM_NAME\n in folder \nplatform/\n, then nav to it.\n\n\nCreate three files: \nrules.mk\n, \nconfig.mk\n and \ntarget.mk\n.\n\n\nrules.mk\n: makefile source code related rules\n\n\nconfig.mk\n: parameters or flags for toolchains and environment\n\n\ntarget.mk\n: rules for building target  \n\n\nCreate a directory named \nport\n there then create three files in it.\n\n\nousia_cfg.h\n: os scalability related configurations\n\n\nousia_port.h\n: header of porting code\n\n\nousia_port.c\n: implentation of porting  \n\n\nCreate other porting related stuffs, such as linker scripts, if necessary.\n\n\nUpdate \nTARGET_PLATFORM\n and \nPROJECT_NAME\n in main \nMakefile\n, then do \nmake\n.\n\n\n\n\nBuild A Different Platform\n\n\nOnly modify the header TODO in root \nMakefile\n\n-   Assign specific \nTARGET_PLATFORM\n and \nPROJECT_NAME\n\n\nDownload Code to Target Chip\n\n\n\n\nModify related user customization items in \nMakefile\n in source tree.\n\n\nDo proper operation on hardware. (i.e. change boot jumper or reset or sth.)\n\n\nThen type \nmake install\n and it will do everything for you.\n\n\n\n\nPs: For stm32, there may be a bootloader, \nmake bootloader\n will download\nbootloader code to chip via serial. And for simulation on x86, no code\ndownloading procedure is needed. See \nMakefile\n for detailed information.\n\n\nAcknowledgments\n\n\nParts of make system and libmaple stm32 low-level code are borrowed from libmaple.\n\nThanks to their excellent works! - \nleaflabs.com\n\nAlso great appreciations to the contributors! - \nnuttx.org\n\nMany code are originally come or inspired from \nNuttX\n, a perfect and stable operating system.", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#ousia", 
+            "text": "A Modest Stupid Embedded Operating System Basics  COPYRIGHT (C) LEAFGRASS", 
+            "title": "Ousia"
+        }, 
+        {
+            "location": "/#introduction", 
+            "text": "Ousia  is picked from ancient Greek.  Mainly intend to describe the basics of an operating system core.  Developed following  KISS  principle.  Completely open and free, use it anywhere you wish!", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#source-tree-architecture", 
+            "text": "core/ \n    Ousia core routines.    doc/ \n    Complete documentation of Ousia.    driver/ \n    Different kinds of device drivers based on Ousia.\n    They are all configurable.    framework/ \n    Framework based on Ousia. Such as shell, vfs, etc.\n    They are scalable and configurable, either.    include/ \n    Header files of main routines of Ousia.    platform/ \n    Chip and board specific code, e.g. low-level library.\n    Ousia porting code are also placed here.    project/ \n    Project source code. Include several sample project instances.    script/ \n    Useful scripts used while Ousia developing.    support/ \n    Basic supporting stuffs for Ousia developing and building.\n    Useful template files are placed here, such as porting code template.", 
+            "title": "Source Tree Architecture"
+        }, 
+        {
+            "location": "/#how-to-start-for-fresh-new-environment", 
+            "text": "Install toolchain   Make \n    For a general purpose, these steps are enough, but there are some more\n    steps needs to do for a specific platform.  e.g.  For stm32 on linux host, we use  dfu ,   serial  or  jtag  to upload firmware:    Install Codesourcery toolchain. (e.g.  arm-2011.03-42-arm-none-eabi )   Install  dfu-util/pyserial/openocd  (all up to your preference). \n    Ps: In fedora or ubuntu,  yum  or  apt-get  install them shall be fine.  Resolve usb or serial access problems. \n    (e.g. copy  ousia/support/dfu/45-maple.rules  to  /etc/udev/rules.d/ )  Install minicom for uart print if you want to debug with console enabled. \n    Ps: Default port is  /dev/ttyACMx  Do  make  and  make install .", 
+            "title": "How to Start for Fresh New Environment"
+        }, 
+        {
+            "location": "/#create-user-project-steps", 
+            "text": "Create a directory named  PROJECT_NAME  in folder  project .  Add user source code.  Create a file  rules.mk  to specify source code related rules for makefile.  Update  TARGET_PLATFORM  and  PROJECT_NAME  in main  Makefile , then do  make .   Ps: Refer to existing projects for further detailed information.", 
+            "title": "Create User Project Steps"
+        }, 
+        {
+            "location": "/#core-developing-steps", 
+            "text": "Choose or create a branch of yourself to work on.  Update source code, include those version related strings.  Modify related Makefiles and configuration files.  Build then do some testing on this branch.  Commit it.  Tag a new one if a new version is commited.  Push this branch to remote repo.  If this is a release version, update Ousia Release Notes.", 
+            "title": "Core Developing Steps"
+        }, 
+        {
+            "location": "/#porting-steps", 
+            "text": "Create a directory named  PLATFORM_NAME  in folder  platform/ , then nav to it.  Create three files:  rules.mk ,  config.mk  and  target.mk .  rules.mk : makefile source code related rules  config.mk : parameters or flags for toolchains and environment  target.mk : rules for building target    Create a directory named  port  there then create three files in it.  ousia_cfg.h : os scalability related configurations  ousia_port.h : header of porting code  ousia_port.c : implentation of porting    Create other porting related stuffs, such as linker scripts, if necessary.  Update  TARGET_PLATFORM  and  PROJECT_NAME  in main  Makefile , then do  make .", 
+            "title": "Porting Steps"
+        }, 
+        {
+            "location": "/#build-a-different-platform", 
+            "text": "Only modify the header TODO in root  Makefile \n-   Assign specific  TARGET_PLATFORM  and  PROJECT_NAME", 
+            "title": "Build A Different Platform"
+        }, 
+        {
+            "location": "/#download-code-to-target-chip", 
+            "text": "Modify related user customization items in  Makefile  in source tree.  Do proper operation on hardware. (i.e. change boot jumper or reset or sth.)  Then type  make install  and it will do everything for you.   Ps: For stm32, there may be a bootloader,  make bootloader  will download\nbootloader code to chip via serial. And for simulation on x86, no code\ndownloading procedure is needed. See  Makefile  for detailed information.", 
+            "title": "Download Code to Target Chip"
+        }, 
+        {
+            "location": "/#acknowledgments", 
+            "text": "Parts of make system and libmaple stm32 low-level code are borrowed from libmaple. \nThanks to their excellent works! -  leaflabs.com \nAlso great appreciations to the contributors! -  nuttx.org \nMany code are originally come or inspired from  NuttX , a perfect and stable operating system.", 
+            "title": "Acknowledgments"
+        }, 
+        {
+            "location": "/arch/", 
+            "text": "Components\n\n\nOusia (would) contain these components:\n\n\n    (*) User Interface\n        (*) Shell\n    (+) Kernel\n        (*) Scheduler\n        (+) Interrupt Handler\n        (+) Memory Management/Protection\n        (*) Multitasking\n        (-) File System\n            (-) Virtual File System\n        (+) Device Driver\n        (+) Multi Platform Porting\n    (-) Communication\n        (-) IP Stack\n    (-) Security\n\n    (-) Automation Test Suite\n    (*) Build System\n    (+) Documentation System\n\n\nPs: (*) Has been implemented.\n    (-) Hasn't been implemented yet.\n    (+) Under developing.\n\n\n\nArchitecture\n\n\nLayer 3\n    +----------------------------------+\n    |           application            |\n    +----------------------------------+\n\nLayer 2\n       __syscall__    __direct_call__\n    +----------------------------------+\n    |                                  |\n    |    core   +----------------------+\n    |           |      framework       |\n    +-----------+----------------------+\n              __direct_call__\n    +----------------------------------+\n    |              driver              |\n    +----------------------------------+\n\nLayer 1\n    +----------------------------------+\n    |           platform (hal)         |\n    +----------------------------------+\n\nLayer 0\n    +----------------------------------+\n    |            hardware              |\n    +----------------------------------+\n\n\n\n\n\nLayer 3: application\n\n\nLayer 2: os core routines, frameworks and drivers\n\n\nLayer 1: hardware abstraction layer\n\n\nLayer 0: specific board", 
+            "title": "Architecture"
+        }, 
+        {
+            "location": "/arch/#components", 
+            "text": "Ousia (would) contain these components:      (*) User Interface\n        (*) Shell\n    (+) Kernel\n        (*) Scheduler\n        (+) Interrupt Handler\n        (+) Memory Management/Protection\n        (*) Multitasking\n        (-) File System\n            (-) Virtual File System\n        (+) Device Driver\n        (+) Multi Platform Porting\n    (-) Communication\n        (-) IP Stack\n    (-) Security\n\n    (-) Automation Test Suite\n    (*) Build System\n    (+) Documentation System\n\n\nPs: (*) Has been implemented.\n    (-) Hasn't been implemented yet.\n    (+) Under developing.", 
+            "title": "Components"
+        }, 
+        {
+            "location": "/arch/#architecture", 
+            "text": "Layer 3\n    +----------------------------------+\n    |           application            |\n    +----------------------------------+\n\nLayer 2\n       __syscall__    __direct_call__\n    +----------------------------------+\n    |                                  |\n    |    core   +----------------------+\n    |           |      framework       |\n    +-----------+----------------------+\n              __direct_call__\n    +----------------------------------+\n    |              driver              |\n    +----------------------------------+\n\nLayer 1\n    +----------------------------------+\n    |           platform (hal)         |\n    +----------------------------------+\n\nLayer 0\n    +----------------------------------+\n    |            hardware              |\n    +----------------------------------+   Layer 3: application  Layer 2: os core routines, frameworks and drivers  Layer 1: hardware abstraction layer  Layer 0: specific board", 
+            "title": "Architecture"
+        }, 
+        {
+            "location": "/demo/", 
+            "text": "Demo\n\n\nThings always look pretty good if they'd go with a demo:\n\n\non boot\n\n\n                 _\n _              / /\n| |  ___  __ _ _| |_ __ _ _  __  __ _   _   _\n| | / _ \\/ _` |_   _/ _` | \\/ _)/ _` | / / / /\n| |_  __( (_| | | |  (_| | | | ( (_| | \\ \\ \\ \\\n|_ _\\___|\\__,_| | | \\__, / | |  \\__,_| /_/ /_/\n                /_/ \\_ _/\n\n    Ousia v0.2.3 Himalayan-Monkshood\n            by LeafGrass - leafgrass.g@gmail.com\n\nWelcome to Ousia console. :)\nPlease press ENTER to activate it.\n\n\n\navailable commands list\n\n\n$ help\navailable commands:\n    help\n    ?\n    debug\n    reboot\n    free\n    xd\n    mw\n\n\n\nmemory statistics\n\n\n$ free\n              total       used       free    largest\nMem:          12288       5200       7088       7088\n\n\n\nlisting processes(threads)\n\n\n$ debug\n[   529.864] 5 processes in queue:\n[   529.899]    pid   pcb      state  prio      run      sleep   name\n[   529.969]     5  0x20002090   0      0       0.350    0.000   ps_console\n[   530.046]     3  0x20001b10   1      0       0.000    0.363   ps_main\n[   530.120]     1  0x20001490  -1      0       0.000    0.000   __cps_init\n[   530.196]     2  0x200016d0   2      0     529.210    0.000   __cps_idle\n[   530.273]     4  0x20001f50   2      0       0.000    0.000   ps_button\n\n\n\nmemory dump\n\n\n$ xd 0x08005000 128\nargv[1]: 0x08005000\nargv[2]: 128\nargc: 3\naddr: 0x8005000\nnb: 128\nmemory dump\n08005000: 00 50 00 20 51 51 00 08 f1 50 00 08 f5 50 00 08 .P. QQ...P...P..\n08005010: f9 50 00 08 fd 50 00 08 01 51 00 08 61 51 00 08 .P...P...Q..aQ..\n08005020: 61 51 00 08 61 51 00 08 61 51 00 08 69 81 00 08 aQ..aQ..aQ..i...\n08005030: 61 51 00 08 61 51 00 08 31 81 00 08 29 55 00 08 aQ..aQ..1...)U..\n08005040: 61 51 00 08 61 51 00 08 61 51 00 08 61 51 00 08 aQ..aQ..aQ..aQ..\n08005050: 61 51 00 08 61 51 00 08 b9 51 00 08 d9 51 00 08 aQ..aQ...Q...Q..\n08005060: f9 51 00 08 19 52 00 08 39 52 00 08 71 59 00 08 .Q...R..9R..qY..\n08005070: 89 59 00 08 a1 59 00 08 bd 59 00 08 d9 59 00 08 .Y...Y...Y...Y..\n\n\n\nabort handling\n\n\n$ xd 0x20005000 128\nargv[1]: 0x20005000\nargv[2]: 128\nargc: 3\naddr: 0x20005000\nnb: 128\nmemory dump\n[   676.653] __hard_fault_handler - psp: 0x200027E0, exception number: 2\n[   676.653] xpsr: 0x21000000\n[   676.653] pc:   0x080097FA\n[   676.653] lr:   0x080097F9\n[   676.653] r12:  0x00000032\n[   676.653] r3:   0x20002800\n[   676.653] r2:   0x2000280A\n[   676.653] r1:   0x00000000\n[   676.653] r0:   0x0000000A\n[   676.653] r11:  0x00000000\n[   676.653] r10:  0x0800AB1C\n[   676.653] r9:   0x20005000\n[   676.653] r8:   0x00000080\n[   676.653] r7:   0x00000000\n[   676.653] r6:   0x200012C8\n[   676.653] r5:   0x08007900\n[   676.653] r4:   0x30303035\n[   676.653] \n dump pcb: 0x20002090 \n\n[   676.653] stack_ptr: 0x20002830\n[   676.653] pentry:    0x080093AD\n[   676.653] name:      ps_console\n[   676.653] stack_sz:  2048\n[   676.653] pid:       5\n[   676.653] prio:      0\n[   676.653] stat:      0\n[   676.653] tcb:       0x200020AC\n[   676.653] prev:      0x200010A0\n[   676.653] next:      0x20001B10\n[   676.653] ----------------------------\n[   676.653] 5 processes in queue:\n[   676.653]    pid   pcb      state  prio      run      sleep   name\n[   676.653]     5  0x20002090   0      0       2.644    0.000   ps_console\n[   676.653]     3  0x20001b10   1      0       0.000    0.201   ps_main\n[   676.653]     1  0x20001490  -1      0       0.000    0.000   __cps_init\n[   676.653]     2  0x200016d0   2      0     673.600    0.000   __cps_idle\n[   676.653]     4  0x20001f50   2      0       0.000    0.000   ps_button", 
+            "title": "Demo"
+        }, 
+        {
+            "location": "/demo/#demo", 
+            "text": "Things always look pretty good if they'd go with a demo:", 
+            "title": "Demo"
+        }, 
+        {
+            "location": "/demo/#on-boot", 
+            "text": "_\n _              / /\n| |  ___  __ _ _| |_ __ _ _  __  __ _   _   _\n| | / _ \\/ _` |_   _/ _` | \\/ _)/ _` | / / / /\n| |_  __( (_| | | |  (_| | | | ( (_| | \\ \\ \\ \\\n|_ _\\___|\\__,_| | | \\__, / | |  \\__,_| /_/ /_/\n                /_/ \\_ _/\n\n    Ousia v0.2.3 Himalayan-Monkshood\n            by LeafGrass - leafgrass.g@gmail.com\n\nWelcome to Ousia console. :)\nPlease press ENTER to activate it.", 
+            "title": "on boot"
+        }, 
+        {
+            "location": "/demo/#available-commands-list", 
+            "text": "$ help\navailable commands:\n    help\n    ?\n    debug\n    reboot\n    free\n    xd\n    mw", 
+            "title": "available commands list"
+        }, 
+        {
+            "location": "/demo/#memory-statistics", 
+            "text": "$ free\n              total       used       free    largest\nMem:          12288       5200       7088       7088", 
+            "title": "memory statistics"
+        }, 
+        {
+            "location": "/demo/#listing-processesthreads", 
+            "text": "$ debug\n[   529.864] 5 processes in queue:\n[   529.899]    pid   pcb      state  prio      run      sleep   name\n[   529.969]     5  0x20002090   0      0       0.350    0.000   ps_console\n[   530.046]     3  0x20001b10   1      0       0.000    0.363   ps_main\n[   530.120]     1  0x20001490  -1      0       0.000    0.000   __cps_init\n[   530.196]     2  0x200016d0   2      0     529.210    0.000   __cps_idle\n[   530.273]     4  0x20001f50   2      0       0.000    0.000   ps_button", 
+            "title": "listing processes(threads)"
+        }, 
+        {
+            "location": "/demo/#memory-dump", 
+            "text": "$ xd 0x08005000 128\nargv[1]: 0x08005000\nargv[2]: 128\nargc: 3\naddr: 0x8005000\nnb: 128\nmemory dump\n08005000: 00 50 00 20 51 51 00 08 f1 50 00 08 f5 50 00 08 .P. QQ...P...P..\n08005010: f9 50 00 08 fd 50 00 08 01 51 00 08 61 51 00 08 .P...P...Q..aQ..\n08005020: 61 51 00 08 61 51 00 08 61 51 00 08 69 81 00 08 aQ..aQ..aQ..i...\n08005030: 61 51 00 08 61 51 00 08 31 81 00 08 29 55 00 08 aQ..aQ..1...)U..\n08005040: 61 51 00 08 61 51 00 08 61 51 00 08 61 51 00 08 aQ..aQ..aQ..aQ..\n08005050: 61 51 00 08 61 51 00 08 b9 51 00 08 d9 51 00 08 aQ..aQ...Q...Q..\n08005060: f9 51 00 08 19 52 00 08 39 52 00 08 71 59 00 08 .Q...R..9R..qY..\n08005070: 89 59 00 08 a1 59 00 08 bd 59 00 08 d9 59 00 08 .Y...Y...Y...Y..", 
+            "title": "memory dump"
+        }, 
+        {
+            "location": "/demo/#abort-handling", 
+            "text": "$ xd 0x20005000 128\nargv[1]: 0x20005000\nargv[2]: 128\nargc: 3\naddr: 0x20005000\nnb: 128\nmemory dump\n[   676.653] __hard_fault_handler - psp: 0x200027E0, exception number: 2\n[   676.653] xpsr: 0x21000000\n[   676.653] pc:   0x080097FA\n[   676.653] lr:   0x080097F9\n[   676.653] r12:  0x00000032\n[   676.653] r3:   0x20002800\n[   676.653] r2:   0x2000280A\n[   676.653] r1:   0x00000000\n[   676.653] r0:   0x0000000A\n[   676.653] r11:  0x00000000\n[   676.653] r10:  0x0800AB1C\n[   676.653] r9:   0x20005000\n[   676.653] r8:   0x00000080\n[   676.653] r7:   0x00000000\n[   676.653] r6:   0x200012C8\n[   676.653] r5:   0x08007900\n[   676.653] r4:   0x30303035\n[   676.653]   dump pcb: 0x20002090  \n[   676.653] stack_ptr: 0x20002830\n[   676.653] pentry:    0x080093AD\n[   676.653] name:      ps_console\n[   676.653] stack_sz:  2048\n[   676.653] pid:       5\n[   676.653] prio:      0\n[   676.653] stat:      0\n[   676.653] tcb:       0x200020AC\n[   676.653] prev:      0x200010A0\n[   676.653] next:      0x20001B10\n[   676.653] ----------------------------\n[   676.653] 5 processes in queue:\n[   676.653]    pid   pcb      state  prio      run      sleep   name\n[   676.653]     5  0x20002090   0      0       2.644    0.000   ps_console\n[   676.653]     3  0x20001b10   1      0       0.000    0.201   ps_main\n[   676.653]     1  0x20001490  -1      0       0.000    0.000   __cps_init\n[   676.653]     2  0x200016d0   2      0     673.600    0.000   __cps_idle\n[   676.653]     4  0x20001f50   2      0       0.000    0.000   ps_button", 
+            "title": "abort handling"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "Project Brief\n\n\nThe project was initially started for fun.\n\nAnd this fun has been bringing the author(a slow coach) quite a lot of satisfaction.\n\n\nContact\n\n\nlibrae8226@gmail.com", 
+            "title": "About"
+        }, 
+        {
+            "location": "/about/#project-brief", 
+            "text": "The project was initially started for fun. \nAnd this fun has been bringing the author(a slow coach) quite a lot of satisfaction.", 
+            "title": "Project Brief"
+        }, 
+        {
+            "location": "/about/#contact", 
+            "text": "librae8226@gmail.com", 
+            "title": "Contact"
+        }
+    ]
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Librae">
+        <link rel="canonical" href="http://ousia.accrete.org/demo/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Demo - Ousia</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Ousia</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Introduction</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../arch/">Architecture</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Demo</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../about/">About</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../arch/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../about/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/LeafGrass/ousia">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#demo">Demo</a></li>
+        
+            <li><a href="#on-boot">on boot</a></li>
+        
+            <li><a href="#available-commands-list">available commands list</a></li>
+        
+            <li><a href="#memory-statistics">memory statistics</a></li>
+        
+            <li><a href="#listing-processesthreads">listing processes(threads)</a></li>
+        
+            <li><a href="#memory-dump">memory dump</a></li>
+        
+            <li><a href="#abort-handling">abort handling</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="demo">Demo</h1>
+<p>Things always look pretty good if they'd go with a demo:</p>
+<h2 id="on-boot">on boot</h2>
+<pre><code>                 _
+ _              / /
+| |  ___  __ _ _| |_ __ _ _  __  __ _   _   _
+| | / _ \/ _` |_   _/ _` | \/ _)/ _` | / / / /
+| |_  __( (_| | | |  (_| | | | ( (_| | \ \ \ \
+|_ _\___|\__,_| | | \__, / | |  \__,_| /_/ /_/
+                /_/ \_ _/
+
+    Ousia v0.2.3 Himalayan-Monkshood
+            by LeafGrass - leafgrass.g@gmail.com
+
+Welcome to Ousia console. :)
+Please press ENTER to activate it.
+</code></pre>
+<h2 id="available-commands-list">available commands list</h2>
+<pre><code>$ help
+available commands:
+    help
+    ?
+    debug
+    reboot
+    free
+    xd
+    mw
+</code></pre>
+<h2 id="memory-statistics">memory statistics</h2>
+<pre><code>$ free
+              total       used       free    largest
+Mem:          12288       5200       7088       7088
+</code></pre>
+<h2 id="listing-processesthreads">listing processes(threads)</h2>
+<pre><code>$ debug
+[   529.864] 5 processes in queue:
+[   529.899]    pid   pcb      state  prio      run      sleep   name
+[   529.969]     5  0x20002090   0      0       0.350    0.000   ps_console
+[   530.046]     3  0x20001b10   1      0       0.000    0.363   ps_main
+[   530.120]     1  0x20001490  -1      0       0.000    0.000   __cps_init
+[   530.196]     2  0x200016d0   2      0     529.210    0.000   __cps_idle
+[   530.273]     4  0x20001f50   2      0       0.000    0.000   ps_button
+</code></pre>
+<h2 id="memory-dump">memory dump</h2>
+<pre><code>$ xd 0x08005000 128
+argv[1]: 0x08005000
+argv[2]: 128
+argc: 3
+addr: 0x8005000
+nb: 128
+memory dump
+08005000: 00 50 00 20 51 51 00 08 f1 50 00 08 f5 50 00 08 .P. QQ...P...P..
+08005010: f9 50 00 08 fd 50 00 08 01 51 00 08 61 51 00 08 .P...P...Q..aQ..
+08005020: 61 51 00 08 61 51 00 08 61 51 00 08 69 81 00 08 aQ..aQ..aQ..i...
+08005030: 61 51 00 08 61 51 00 08 31 81 00 08 29 55 00 08 aQ..aQ..1...)U..
+08005040: 61 51 00 08 61 51 00 08 61 51 00 08 61 51 00 08 aQ..aQ..aQ..aQ..
+08005050: 61 51 00 08 61 51 00 08 b9 51 00 08 d9 51 00 08 aQ..aQ...Q...Q..
+08005060: f9 51 00 08 19 52 00 08 39 52 00 08 71 59 00 08 .Q...R..9R..qY..
+08005070: 89 59 00 08 a1 59 00 08 bd 59 00 08 d9 59 00 08 .Y...Y...Y...Y..
+</code></pre>
+<h2 id="abort-handling">abort handling</h2>
+<pre><code>$ xd 0x20005000 128
+argv[1]: 0x20005000
+argv[2]: 128
+argc: 3
+addr: 0x20005000
+nb: 128
+memory dump
+[   676.653] __hard_fault_handler - psp: 0x200027E0, exception number: 2
+[   676.653] xpsr: 0x21000000
+[   676.653] pc:   0x080097FA
+[   676.653] lr:   0x080097F9
+[   676.653] r12:  0x00000032
+[   676.653] r3:   0x20002800
+[   676.653] r2:   0x2000280A
+[   676.653] r1:   0x00000000
+[   676.653] r0:   0x0000000A
+[   676.653] r11:  0x00000000
+[   676.653] r10:  0x0800AB1C
+[   676.653] r9:   0x20005000
+[   676.653] r8:   0x00000080
+[   676.653] r7:   0x00000000
+[   676.653] r6:   0x200012C8
+[   676.653] r5:   0x08007900
+[   676.653] r4:   0x30303035
+[   676.653] &gt;&gt;&gt; dump pcb: 0x20002090 &lt;&lt;&lt;
+[   676.653] stack_ptr: 0x20002830
+[   676.653] pentry:    0x080093AD
+[   676.653] name:      ps_console
+[   676.653] stack_sz:  2048
+[   676.653] pid:       5
+[   676.653] prio:      0
+[   676.653] stat:      0
+[   676.653] tcb:       0x200020AC
+[   676.653] prev:      0x200010A0
+[   676.653] next:      0x20001B10
+[   676.653] ----------------------------
+[   676.653] 5 processes in queue:
+[   676.653]    pid   pcb      state  prio      run      sleep   name
+[   676.653]     5  0x20002090   0      0       2.644    0.000   ps_console
+[   676.653]     3  0x20001b10   1      0       0.000    0.201   ps_main
+[   676.653]     1  0x20001490  -1      0       0.000    0.000   __cps_init
+[   676.653]     2  0x200016d0   2      0     673.600    0.000   __cps_idle
+[   676.653]     4  0x20001f50   2      0       0.000    0.000   ps_button
+</code></pre>
+
+            <!-- disqus -->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = 'ousia-docs'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+
+        
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+
+        <!-- disqus -->
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ousia-docs'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+    </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Modest Stupid Embedded Operating System Basics">
+        <meta name="author" content="Librae">
+        <link rel="canonical" href="http://ousia.accrete.org/">
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>Ousia</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">Ousia</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Introduction</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="arch/">Architecture</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="demo/">Demo</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="about/">About</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="arch/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/LeafGrass/ousia">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#ousia">Ousia</a></li>
+        
+            <li><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#source-tree-architecture">Source Tree Architecture</a></li>
+        
+            <li><a href="#how-to-start-for-fresh-new-environment">How to Start for Fresh New Environment</a></li>
+        
+            <li><a href="#create-user-project-steps">Create User Project Steps</a></li>
+        
+            <li><a href="#core-developing-steps">Core Developing Steps</a></li>
+        
+            <li><a href="#porting-steps">Porting Steps</a></li>
+        
+            <li><a href="#build-a-different-platform">Build A Different Platform</a></li>
+        
+            <li><a href="#download-code-to-target-chip">Download Code to Target Chip</a></li>
+        
+            <li><a href="#acknowledgments">Acknowledgments</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="ousia">Ousia</h1>
+<p><em>A Modest Stupid Embedded Operating System Basics</em></p>
+<p><code>COPYRIGHT (C) LEAFGRASS</code></p>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li><strong>Ousia</strong> is picked from ancient Greek.</li>
+<li>Mainly intend to describe the basics of an operating system core.</li>
+<li>Developed following <strong>KISS</strong> principle.</li>
+<li>Completely open and free, use it anywhere you wish!</li>
+</ul>
+<h2 id="source-tree-architecture">Source Tree Architecture</h2>
+<ul>
+<li>
+<p><code>core/</code><br />
+    Ousia core routines.</p>
+</li>
+<li>
+<p><code>doc/</code><br />
+    Complete documentation of Ousia.</p>
+</li>
+<li>
+<p><code>driver/</code><br />
+    Different kinds of device drivers based on Ousia.
+    They are all configurable.</p>
+</li>
+<li>
+<p><code>framework/</code><br />
+    Framework based on Ousia. Such as shell, vfs, etc.
+    They are scalable and configurable, either.</p>
+</li>
+<li>
+<p><code>include/</code><br />
+    Header files of main routines of Ousia.</p>
+</li>
+<li>
+<p><code>platform/</code><br />
+    Chip and board specific code, e.g. low-level library.
+    Ousia porting code are also placed here.</p>
+</li>
+<li>
+<p><code>project/</code><br />
+    Project source code. Include several sample project instances.</p>
+</li>
+<li>
+<p><code>script/</code><br />
+    Useful scripts used while Ousia developing.</p>
+</li>
+<li>
+<p><code>support/</code><br />
+    Basic supporting stuffs for Ousia developing and building.
+    Useful template files are placed here, such as porting code template.</p>
+</li>
+</ul>
+<h2 id="how-to-start-for-fresh-new-environment">How to Start for Fresh New Environment</h2>
+<ul>
+<li>Install toolchain</li>
+<li>
+<p>Make<br />
+    For a general purpose, these steps are enough, but there are some more
+    steps needs to do for a specific platform.</p>
+<p><strong>e.g.</strong> For stm32 on linux host, we use <code>dfu</code>,  <code>serial</code> or <code>jtag</code> to upload firmware:</p>
+</li>
+<li>
+<p>Install Codesourcery toolchain. (e.g. <code>arm-2011.03-42-arm-none-eabi</code>)</p>
+</li>
+<li>Install <code>dfu-util/pyserial/openocd</code> (all up to your preference).<br />
+    Ps: In fedora or ubuntu, <code>yum</code> or <code>apt-get</code> install them shall be fine.</li>
+<li>Resolve usb or serial access problems.<br />
+    (e.g. copy <code>ousia/support/dfu/45-maple.rules</code> to <code>/etc/udev/rules.d/</code>)</li>
+<li>Install minicom for uart print if you want to debug with console enabled.<br />
+    Ps: Default port is <code>/dev/ttyACMx</code></li>
+<li>Do <code>make</code> and <code>make install</code>.</li>
+</ul>
+<h2 id="create-user-project-steps">Create User Project Steps</h2>
+<ul>
+<li>Create a directory named <code>PROJECT_NAME</code> in folder <code>project</code>.</li>
+<li>Add user source code.</li>
+<li>Create a file <code>rules.mk</code> to specify source code related rules for makefile.</li>
+<li>Update <code>TARGET_PLATFORM</code> and <code>PROJECT_NAME</code> in main <code>Makefile</code>, then do <code>make</code>.</li>
+</ul>
+<p><em>Ps: Refer to existing projects for further detailed information.</em></p>
+<h2 id="core-developing-steps">Core Developing Steps</h2>
+<ul>
+<li>Choose or create a branch of yourself to work on.</li>
+<li>Update source code, include those version related strings.</li>
+<li>Modify related Makefiles and configuration files.</li>
+<li>Build then do some testing on this branch.</li>
+<li>Commit it.</li>
+<li>Tag a new one if a new version is commited.</li>
+<li>Push this branch to remote repo.</li>
+<li>If this is a release version, update Ousia Release Notes.</li>
+</ul>
+<h2 id="porting-steps">Porting Steps</h2>
+<ul>
+<li>Create a directory named <code>PLATFORM_NAME</code> in folder <code>platform/</code>, then nav to it.</li>
+<li>Create three files: <code>rules.mk</code>, <code>config.mk</code> and <code>target.mk</code>.<br />
+<code>rules.mk</code>: makefile source code related rules<br />
+<code>config.mk</code>: parameters or flags for toolchains and environment<br />
+<code>target.mk</code>: rules for building target  </li>
+<li>Create a directory named <code>port</code> there then create three files in it.<br />
+<code>ousia_cfg.h</code>: os scalability related configurations<br />
+<code>ousia_port.h</code>: header of porting code<br />
+<code>ousia_port.c</code>: implentation of porting  </li>
+<li>Create other porting related stuffs, such as linker scripts, if necessary.</li>
+<li>Update <code>TARGET_PLATFORM</code> and <code>PROJECT_NAME</code> in main <code>Makefile</code>, then do <code>make</code>.</li>
+</ul>
+<h2 id="build-a-different-platform">Build A Different Platform</h2>
+<p>Only modify the header TODO in root <code>Makefile</code>
+-   Assign specific <code>TARGET_PLATFORM</code> and <code>PROJECT_NAME</code></p>
+<h2 id="download-code-to-target-chip">Download Code to Target Chip</h2>
+<ul>
+<li>Modify related user customization items in <code>Makefile</code> in source tree.</li>
+<li>Do proper operation on hardware. (i.e. change boot jumper or reset or sth.)</li>
+<li>Then type <code>make install</code> and it will do everything for you.</li>
+</ul>
+<p>Ps: For stm32, there may be a bootloader, <code>make bootloader</code> will download
+bootloader code to chip via serial. And for simulation on x86, no code
+downloading procedure is needed. See <code>Makefile</code> for detailed information.</p>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>Parts of make system and libmaple stm32 low-level code are borrowed from libmaple.<br />
+Thanks to their excellent works! - <a href="http://leaflabs.com">leaflabs.com</a><br />
+Also great appreciations to the contributors! - <a href="http://nuttx.org">nuttx.org</a><br />
+Many code are originally come or inspired from <strong>NuttX</strong>, a perfect and stable operating system.  </p>
+
+            <!-- disqus -->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = 'ousia-docs'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+            </div>
+        </div>
+
+        
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script src="./js/base.js"></script>
+
+        <!-- disqus -->
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ousia-docs'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+    </body>
+</html>
